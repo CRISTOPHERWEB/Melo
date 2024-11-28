@@ -1,0 +1,131 @@
+/* Reseteo de estilos */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: Arial, sans-serif;
+    background-color: #e68991;
+    overflow: hidden;
+}
+
+/* Sección del texto de arriba */
+.texto-arriba {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-weight: bold;
+    color: #ff4757;
+    text-align: center;
+    z-index: 10;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección del corazón */
+.heart-contenedor {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222f3e;
+    position: relative;
+    z-index: 1;
+}
+
+.heart {
+    width: 70px;
+    height: 70px;
+    background-color: #ff4757;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 90px #ff4757;
+    animation: heartbeat .8s linear infinite;
+    cursor: pointer;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    background: #ff4757;
+    border-radius: 50%;
+    box-shadow: -10px 10px 90px #ff4757;
+}
+
+.heart::before {
+    width: 70px;
+    height: 70px;
+    top: -50%;
+}
+
+.heart::after {
+    width: 70px;
+    height: 70px;
+    right: -50%;
+}
+
+/* Animación del corazón */
+@keyframes heartbeat {
+    0% {
+        transform: rotate(-45deg) scale(1.07);
+    }
+    80% {
+        transform: rotate(-45deg) scale(1.0);
+    }
+    100% {
+        transform: rotate(-45deg) scale(0.8);
+    }
+}
+
+/* Sección del botón */
+.boton-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.boton {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.boton i {
+    font-size: 1.5rem;
+}
+
+.boton:hover {
+    background-color: #e84118;
+    transform: scale(1.1);
+}
+
+/* Sección de la cuenta regresiva */
+.countdown {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff4757;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
