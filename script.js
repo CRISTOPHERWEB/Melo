@@ -87,3 +87,17 @@ const interval = setInterval(updateCountdown, 1000);
 
 // Llamar a la función para mostrar el tiempo inicial inmediatamente
 updateCountdown();
+
+// Esperamos a que la página se haya cargado
+    window.addEventListener('load', function() {
+      const video = document.getElementById('myVideo');
+
+      // Reproducir automáticamente el video
+      video.play();
+
+      // Hacer que el video se repita (loop) cuando termine
+      video.addEventListener('ended', function() {
+        video.currentTime = 0;  // Reiniciar al inicio
+        video.play();           // Reproducir nuevamente
+      });
+    });
