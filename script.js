@@ -1,70 +1,71 @@
-window.onload = function() {
-  const video = document.querySelector('video');
-  if (video) {
-    video.play();
-  }
-};
+// Obtener elementos de la carta
+const btnOpenElement = document.querySelector('#open');
+const btnCloseElement = document.querySelector('#close');
 
-const urlSearchParams = new URLSearchParams(window.location.search)
+// Obtener elementos del video
+const video = document.getElementById('video');
+const playButton = document.getElementById('play');
+const pauseButton = document.getElementById('pause');
 
-const messageCustom = urlSearchParams.get('message')
+// Deshabilitar el botón de pausa inicialmente
+pauseButton.disabled = true;
 
-if (messageCustom) {
+// Control de la carta
+btnCloseElement.disabled = true;
 
-  const mainMessageElement = document.querySelector('#mainMessage')
-  mainMessageElement.textContent = decodeURI(messageCustom)
-}
+btnOpenElement.addEventListener('click', () => {
+  btnOpenElement.disabled = true;
+  btnCloseElement.disabled = false;
 
-// the tutorial starts here
+  const coverElement = document.querySelector('.cover');
+  coverElement.classList.add('open-cover');
 
-const btnOpenElement = document.querySelector('#open')
-const btnCloseElement = document.querySelector('#close')
+  setTimeout(() => {
+    coverElement.style.zIndex = -1;
 
-btnCloseElement.disabled = true
+    const paperElement = document.querySelector('.paper');
+    paperElement.classList.remove('close-paper');
+    paperElement.classList.add('open-paper');
 
+    // Animación del corazón
+    const heartElement = document.querySelector('.heart');
+    heartElement.style.display = 'block';
+  }, 500);
+});
 
+btnCloseElement.addEventListener('click', () => {
+  btnOpenElement.disabled = false;
+  btnCloseElement.disabled = true;
 
-btnOpenElement.addEventListener('click', ()=> {
-  btnOpenElement.disabled = true
-  btnCloseElement.disabled = false
-  const coverElement = document.querySelector('.cover')
-  coverElement.classList.add('open-cover')
+  const coverElement = document.querySelector('.cover');
+  const paperElement = document.querySelector('.paper');
+  paperElement.classList.remove('open-paper');
+  paperElement.classList.add('close-paper');
 
-  setTimeout(()=>{
-    //
-    coverElement.style.zIndex = -1
-    
-    const paperElement = document.querySelector('.paper')
-    paperElement.classList.remove('close-paper')
-    paperElement.classList.add('open-paper')
+  setTimeout(() => {
+    coverElement.style.zIndex = 0;
+    coverElement.classList.remove('open-cover');
 
-    // animacion del corazón
-    const heartElement = document.querySelector('.heart')
-    heartElement.style.display = 'block'
-  
-  }, 500)
+    // Animación del corazón
+    const heartElement = document.querySelector('.heart');
+    heartElement.style.display = 'none';
+  }, 500);
+});
 
-})
-btnCloseElement.addEventListener('click', ()=> {
-  btnOpenElement.disabled = false
-  btnCloseElement.disabled = true
+// Control de video
+playButton.addEventListener('click', () => {
+  video.play();
+  playButton.disabled = true;
+  pauseButton.disabled = false;
+});
 
-  const coverElement = document.querySelector('.cover')
-  const paperElement = document.querySelector('.paper')
-  paperElement.classList.remove('open-paper')
-  paperElement.classList.add('close-paper')
-  
-  setTimeout(()=>{
-    coverElement.style.zIndex = 0
-    coverElement.classList.remove('open-cover')
+pauseButton.addEventListener('click', () => {
+  video.pause();
+  playButton.disabled = false;
+  pauseButton.disabled = true;
+});
 
-    // animacion del corazón
-    const heartElement = document.querySelector('.heart')
-    heartElement.style.display = 'none'
-  },500)
-})
-
-// Establecer la fecha objetivo: 10 de diciembre de 2024
+// Establecer la fecha objetivo para la cuenta regresiva
 const targetDate = new Date("2024-12-10T00:00:00");
 
 // Función para actualizar la cuenta regresiva

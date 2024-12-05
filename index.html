@@ -8,11 +8,13 @@
 </head>
 <body>
   <main>
-    <video>
+    <!-- Video con botones de control -->
+    <video id="video" loop>
       <source src="Lana Del Rey - Cinnamon GirL.mp4" type="video/mp4">
-      Tu navegador no soporta videos HTML5.
     </video>
-    <div class="titulo"><h1>Buenos dias mi vida ♡ </h1></div>
+    
+    <div class="titulo"><h1>Buenos días mi vida ♡ </h1></div>
+    
     <div class="container-letter">
       <div class="cover"></div>
       <span class="heart">♥</span>
@@ -21,13 +23,23 @@
       </p>
       <div class="letter"></div>
     </div>
+
+    <!-- Botones para abrir y cerrar la carta -->
     <div class="options">
-      <button id="open">Abrir</button>
-      <button id="close">Cerrar</butto>
+      <button id="open">Abrir carta</button>
+      <button id="close" disabled>Cerrar carta</button>
     </div>
+
+    <!-- Botones para reproducir y pausar el video -->
+    <div class="video-controls">
+      <button id="play">Reproducir Video</button>
+      <button id="pause" disabled>Pausar Video</button>
+    </div>
+
     <!-- Contenedor para mostrar la cuenta regresiva -->
     <div id="countdown" class="countdown"></div>
   </main>
+  
   <script src="script.js"></script>
 </body>
 </html>
