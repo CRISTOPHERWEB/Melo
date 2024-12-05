@@ -1,16 +1,9 @@
-// Esperamos a que la página se haya cargado
-    window.addEventListener('load', function() {
-      const video = document.getElementById('myVideo');
-
-      // Reproducir automáticamente el video
-      video.play();
-
-      // Hacer que el video se repita (loop) cuando termine
-      video.addEventListener('ended', function() {
-        video.currentTime = 0;  // Reiniciar al inicio
-        video.play();           // Reproducir nuevamente
-      });
-    });
+window.onload = function() {
+  const video = document.querySelector('video');
+  if (video) {
+    video.play();
+  }
+};
 
 const urlSearchParams = new URLSearchParams(window.location.search)
 
