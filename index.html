@@ -12,6 +12,21 @@
       <source src="Lana Del Rey - Cinnamon GirL.mp4" type="video/mp4">
       Tu navegador no soporta videos HTML5.
     </video>
+    <script>
+    // Aseguramos que el video se reproduce automáticamente cuando la página se carga
+    window.onload = function() {
+      const video = document.getElementById('myVideo');
+
+      // Reproducir el video cuando se haya cargado
+      video.play();
+
+      // Detectamos cuando el video ha terminado y lo reiniciamos
+      video.addEventListener('ended', function() {
+        video.currentTime = 0; // Reiniciamos el video al principio
+        video.play();          // Reproducimos nuevamente
+      });
+    };
+  </script>
     <div class="titulo"><h1>Buenos dias mi vida ♡ </h1></div>
     <div class="container-letter">
       <div class="cover"></div>
